@@ -1,5 +1,7 @@
 package org.esdpracticals.yummyrest.service;
 
+import jakarta.validation.Valid;
+import org.esdpracticals.yummyrest.dto.CustomerLoginRequest;
 import org.esdpracticals.yummyrest.dto.CustomerRequest;
 import org.esdpracticals.yummyrest.entity.Customer;
 import org.esdpracticals.yummyrest.mapper.CustomerMapper;
@@ -17,5 +19,14 @@ public class CustomerService {
         Customer customer = mapper.toEntity(request);
         repo.save(customer);
         return "Created";
+    }
+
+    public String loginCustomer(@Valid CustomerLoginRequest request) {
+        Customer customer = repo.findByEmail(request.email());
+        if (customer == null || !customer.getPassword().equals(request.password())) {
+            return "Invalid email or password";
+        }
+
+        return "Login Successful";
     }
 }
