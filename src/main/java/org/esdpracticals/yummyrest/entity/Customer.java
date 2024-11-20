@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,4 +25,13 @@ public class Customer {
 
     @Column(name="password", nullable = false)
     private String password;
+
+    @Column(name = "address", nullable = false)
+    private String address;
+
+    @Column(name = "city", nullable = false)
+    private String city;
+
+    @Column(name = "pincode", nullable = false)
+    private String pincode;
 }
