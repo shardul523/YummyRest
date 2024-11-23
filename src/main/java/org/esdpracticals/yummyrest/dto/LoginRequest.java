@@ -2,7 +2,7 @@ package org.esdpracticals.yummyrest.dto;
 
 import jakarta.validation.constraints.*;
 
-public record CustomerLoginRequest(
+public record LoginRequest(
         @NotNull(message = "Email field must be given")
         @Email(message = "Email must be in email format")
         String email,
