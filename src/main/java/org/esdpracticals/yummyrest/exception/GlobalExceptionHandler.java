@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(message, HttpStatus.UNAUTHORIZED);
     }
 
-    @ExceptionHandler(CustomerNotFound.class)
+    @ExceptionHandler({CustomerNotFound.class, ProductNotFoundException.class})
     public ResponseEntity<String> customerNotFoundExceptionHandler(CustomerNotFound e) {
         String message = e.getMessage();
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
